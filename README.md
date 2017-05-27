@@ -15,9 +15,9 @@ Obviously how you do this depends on your data, but I normally use something lik
 
     fnames = dir('*.txt');
     numfids = length(fnames);
-    vals = cell(1,numfids);
+    vals_adj = cell(1,numfids);
     for K = 1:numfids
-      vals{K} = importfile(fnames(K).name);
+      vals_adj{K} = importfile(fnames(K).name);
     end
 
 where importfile is a function to import the file in the correct form (as a matrix).

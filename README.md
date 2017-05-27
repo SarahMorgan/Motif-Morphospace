@@ -26,7 +26,17 @@ Ultimately, the goal is to have a cell array "vals{1,N}" where each cell contain
 
 **2. Run the code adjacency2orca.m**
 
-This code accepts your adjacency matrices and puts them in the format required for orca, which is a piece of software used to count motifs. You can run it using the command: "adjacency2orca". Note that this command will output N files (one for each network), into the current directory (these files contain the network in the right format). So create a new directory (called, e.g. vals_orca) for these files and make sure you're in it before running the command.
+This code accepts your adjacency matrices and puts them in the format required for orca, which is a piece of software used to count motifs. You can run it using the command:
+
+    vals_orca=adjacency2orca(vals_adj);
+
+Next you want to output N files (one for each network), which contain the networks in the right format for orca. So create a new directory (called, e.g. vals_orca) for these files and make sure you're in it, then run:
+
+    for num=1:100
+    fid = fopen(strcat('orca_',num2str(num),'.txt'),'w');
+    fprintf(fid,'%d\t%d\n',vals_fororca{1,num}');
+    fclose(fid);
+    end
 
 **3. Count the motifs**
 
@@ -36,7 +46,7 @@ To use orca, first install it from [here](http://www.biolab.si/supp/orca/).
 
 Then run the application on your data. The command (which you can run straight from the command line in Windows) will be something like:
 
-    orca.exe 4 example.in example.out
+    orca.exe 4 myfile.txt myfile.txt_out
     
 Here 4 refers to the maximum number of nodes you want the motifs you're counting to have. E.g. if you put 4 then you'll be counting 4 node motifs, put 5 if you also need 5 node motifs etc. The larger the motifs, the longer they take to count. The time taken will also depend on the number of nodes and edges your networks have.
 

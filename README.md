@@ -33,9 +33,9 @@ This code accepts your adjacency matrices and puts them in the format required f
 Next you want to output N files (one for each network), which contain the networks in the right format for orca. So create a new directory (called, e.g. vals_orca) for these files and make sure you're in it, then run:
 
     for num=1:100
-    fid = fopen(strcat('orca_',num2str(num),'.txt'),'w');
-    fprintf(fid,'%d\t%d\n',vals_fororca{1,num}');
-    fclose(fid);
+        fid = fopen(strcat('orca_',num2str(num),'.txt'),'w');
+        fprintf(fid,'%d\t%d\n',vals_fororca{1,num}');
+        fclose(fid);
     end
 
 **3. Count the motifs**

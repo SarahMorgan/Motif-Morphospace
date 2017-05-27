@@ -3,7 +3,7 @@ This repo describes how to take a bunch of networks and create their motif morph
 
 Creating the motif morphospace involves calculating the motif profile of each network, then performing a principal component analysis (PCA) across all of the networks to extract the principal components (PCs). You can then plot the individual networks within the PC space.
 
-Input (what you need to use this code): undirected, binary adjacency matrices. All of the matrices should have the same number of nodes and edges, because motif counts depend (non-trivially) on the number of nodes and edges. So if your matrices have different numbers of nodes or edges, you're no longer comparing like with like.
+Input *(what you need to use this code)*: undirected, binary adjacency matrices. All of the matrices should have the same number of nodes and edges, because motif counts depend (non-trivially) on the number of nodes and edges. So if your matrices have different numbers of nodes or edges, you're no longer comparing like with like.
 
 Outputs: average motif profile for your networks, variance explained by each PC, plot of motif morphospace and plots of motif morphospace coloured by global network metrics.
 
@@ -26,16 +26,23 @@ Ultimately, the goal is to have a cell array "vals{1,N}" where each cell contain
 
 **2. Run the code adjacency2orca.m**
 
-This code accepts your adjacency matrices and puts them in the format required for orca, which is a piece of software used to count motifs. You can run it using the command...
+This code accepts your adjacency matrices and puts them in the format required for orca, which is a piece of software used to count motifs. You can run it using the command: "adjacency2orca"
 
 **3. Count the motifs**
 
-Now we're ready to count the motifs! There are lots of ways to do this- e.g. mfinder (...), FANMOD (...) and orca (...). Here I'll describe how to use orca, which I like because it's super fast and it also gives you a motif count per region, but the others would work equally well. If you use a different code from orca, bear in mind that it will almost certainly require a (sometimes subtly) different input. The output will probably also be different, e.g. in terms of the ordering of the motifs (is motif 1 a square, a chain or something else? You need to check!), whether it outputs motifs per region and whether the motifs counts are normalised to the total number of motifs or not.
+Now we're ready to count the motifs! There are lots of ways to do this- e.g. mfinder (...), FANMOD (...) and [orca!](http://www.biolab.si/supp/orca/) (by Tomaž Hočevar and Janez Demšar, "A combinatorial approach to graphlet counting", Bioinformatics, 2014). Here I'll describe how to use orca, which I like because it's super fast and it also gives you a motif count per region, but the others would work equally well. If you use a different code from orca, bear in mind that it will almost certainly require a (sometimes subtly) different input. The output will probably also be different, e.g. in terms of the ordering of the motifs (is motif 1 a square, a chain or something else? You need to check!), whether it outputs motifs per region and whether the motifs counts are normalised to the total number of motifs or not.
 
-To use orca, first install it from...
+To use orca, first install it from [here!](http://www.biolab.si/supp/orca/)
 
-Then run the application on your data. The command will be something like:
+Then run the application on your data. The command (which you can run straight from the command line in Windows) will be something like:
 
+    orca.exe 4 example.in example.out
+    
+Here 4 refers to the number of nodes you want the motifs you're counting to have. E.g. if you put 4 then you'll be counting 4 node motifs, put 5 for 5 node motifs etc.
+
+We want to loop this command over all of the networks, so in Windows you need something like:
+
+    for %f in (.\*) do orca.exe 4 %f %f.OUT
 
 Once it's run you'll have a bunch of files called e.g. ...
 

@@ -6,6 +6,7 @@ Creating the motif morphospace involves calculating the motif profile of each ne
 Input *(what you need to use this code)*: undirected, binary adjacency matrices. All of the matrices should have the same number of nodes and edges, because motif counts depend (non-trivially) on the number of nodes and edges. So if your matrices have different numbers of nodes or edges, you're no longer comparing like with like. This code could be modified quite easily to work for directed networks (and hence directed motifs), although the way it's described here is for undirected networks.
 
 Outputs: average motif profile for your networks, variance explained by each PC, plot of motif morphospace and plots of motif morphospace coloured by global network metrics.
+
 **Steps:**
 
 **1. Import your adjacency matrices into Matlab**

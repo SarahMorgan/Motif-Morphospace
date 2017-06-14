@@ -6,7 +6,6 @@ Creating the motif morphospace involves calculating the motif profile of each ne
 Input *(what you need to use this code)*: undirected, binary adjacency matrices. All of the matrices should have the same number of nodes and edges, because motif counts depend (non-trivially) on the number of nodes and edges. So if your matrices have different numbers of nodes or edges, you're no longer comparing like with like. This code could be modified quite easily to work for directed networks (and hence directed motifs), although the way it's described here is for undirected networks.
 
 Outputs: average motif profile for your networks, variance explained by each PC, plot of motif morphospace and plots of motif morphospace coloured by global network metrics.
-
 **Steps:**
 
 **1. Import your adjacency matrices into Matlab**
@@ -17,8 +16,7 @@ Obviously how you do this depends on your data, but I normally use something lik
     numfids = length(fnames);
     vals_adj = cell(1,numfids);
     for K = 1:numfids
-      vals_adj{K} = importfile(fnames(K).name);
-    end
+      vals_adj{K} = importfile(fnames(K).name);    end
 
 where importfile is a function to import the file in the correct form (as a matrix).
 
@@ -31,7 +29,6 @@ This code accepts your adjacency matrices and puts them in the format required f
     vals_orca=adjacency2orca(vals_adj);
 
 Next you want to output N files (one for each network), which contain the networks in the right format for orca. So create a new directory (called, e.g. vals_orca) for these files and make sure you're in it, then run:
-
     for num=1:100
         fid = fopen(strcat('orca_',num2str(num),'.txt'),'w');
         fprintf(fid,'%d\t%d\n',vals_orca{1,num}');
@@ -74,4 +71,4 @@ Congratulations- you have calculated your motif morphospace!! :)
 Obviously there are lots of things you might want to do with your motif morphospace. Below is a list of possible analyses with links to the code. Please feel free to add your own analyses to the list and put the relevant code in the folder!
 
   - 'globalmeas.m': Calculates global network measures and colours the morphospace according to these measures
-  - 'superimpose.m': Superimposes new data on top of your original morphospace (many thanks to... for this!)
+  - 'superimpose.m': Superimposes new data on top of your original morphospace (many thanks to Dr Pablo Szekely for this!)

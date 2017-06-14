@@ -67,7 +67,6 @@ Congratulations- you have calculated your motif morphospace!! :)
 
 **5. Do any other analyses you're interested in!**
 
-Obviously there are lots of things you might want to do with your motif morphospace. Below is a list of possible analyses with links to the code. Please feel free to add your own analyses to the list and put the relevant code in the folder!
+Obviously there are lots of things you might want to do with your motif morphospace. Below is one possible analysis with a link to the code. Please feel free to add your own analyses to the list and put the relevant code in the folder!
 
   - 'globalmetrics.m': Calculates global network measures and colours the morphospace according to these measures
-  - 'superimpose.m': Superimposes new data on top of your original morphospace (many thanks to Dr Pablo Szekely for this!)

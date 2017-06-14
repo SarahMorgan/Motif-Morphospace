@@ -50,7 +50,7 @@ percentagevar=100*cumsum(latent)/sum(latent);
 
 figure
 plot(1:6,percentagevar,'x-');
-xlabel('Motif')
+xlabel('Principal component')
 ylabel('Cumulative variability explained (%)')
 
 % plot motif morphospace biplot:

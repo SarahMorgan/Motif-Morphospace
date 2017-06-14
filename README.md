@@ -1,4 +1,4 @@
-# Motif-Morphospace
+﻿# Motif-Morphospace
 This repo describes how to take a bunch of networks and create their motif morphospace, as described in... The code is written in Matlab.
 
 Creating the motif morphospace involves calculating the motif profile of each network, then performing a principal component analysis (PCA) across all of the networks to extract the principal components (PCs). You can then plot the individual networks within the PC space.
@@ -58,18 +58,32 @@ Here I'm counting everything up to 4 node motifs. Note that all of the files in 
 
 Once it's run you should have a bunch of files with the extension .OUT. These files contain the motif counts.
 
-**4. Calculate and plot your morphospace**
+**4. Import your orca results**
 
-To recap- so far we have imported our networks and counted the number of every motif with 4 or fewer nodes in every network. The code plotmorphospace.m allows you to:
-  - Import your orca results
+To recap- so far we have imported our networks and counted the number of every motif with 4 or fewer nodes in every network.
+Now we need to import the results from orca. To do this, you need to create the function 'importfile2'- this can be done manually in Matlab by going to 'Import data', selecting the option 'matrix', then 'Import selection' and 'Generate function'. Then, from the folder with your orca output files, run:
+
+    numFiles=100;
+    orca_output = cell(1,numFiles);
+    for fileNum = 1:numFiles
+    	fileName = ['orca_',num2str(fileNum),'.txt.OUT'];
+    	orca_output{fileNum} = importfile(fileName);
+    end
+
+Note that in the code above numFiles should be set to the number of networks you have (e.g. here we have 100 networks).
+
+**5. Calculate and plot your morphospace**
+
+The code plotmorphospace.m allows you to:
   - Calculate and plot the motif profiles
+  - Calculate and plot the cumulative variability explained by each PC
   - Calculate and plot the morphospace
   
 You can run it directly using the command 'plotmorphospace' in Matlab. The code is set up for 4 node motifs. If you want to consider motifs with a different number of nodes, you will need to modify it.
 
 Congratulations- you have calculated your motif morphospace!! :)
 
-**5. Do any other analyses you're interested in!**
+**6. Do any other analyses you're interested in!**
 
 Obviously there are lots of things you might want to do with your motif morphospace. Below is a list of possible analyses with links to the code. Please feel free to add your own analyses to the list and put the relevant code in the folder!
 

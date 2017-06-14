@@ -16,8 +16,7 @@ Obviously how you do this depends on your data, but I normally use something lik
     fnames = dir('*.txt');
     numfids = length(fnames);
     vals_adj = cell(1,numfids);
-    for K = 1:numfids
-      vals_adj{K} = importfile(fnames(K).name);    end
+    for K = 1:numfids      vals_adj{K} = importfile(fnames(K).name);    end
 
 where importfile is a function to import the file in the correct form (as a matrix).
 
@@ -28,7 +27,6 @@ Ultimately, the goal is to have a cell array "vals{1,N}" where each cell contain
 This code accepts your adjacency matrices and puts them in the format required for orca, which is a piece of software used to count motifs. You can run it using the command:
 
     vals_orca=adjacency2orca(vals_adj);
-
 Next you want to output N files (one for each network), which contain the networks in the right format for orca. So create a new directory (called, e.g. vals_orca) for these files and make sure you're in it, then run:
     for num=1:100
         fid = fopen(strcat('orca_',num2str(num),'.txt'),'w');
@@ -71,5 +69,5 @@ Congratulations- you have calculated your motif morphospace!! :)
 
 Obviously there are lots of things you might want to do with your motif morphospace. Below is a list of possible analyses with links to the code. Please feel free to add your own analyses to the list and put the relevant code in the folder!
 
-  - 'globalmeas.m': Calculates global network measures and colours the morphospace according to these measures
+  - 'globalmetrics.m': Calculates global network measures and colours the morphospace according to these measures
   - 'superimpose.m': Superimposes new data on top of your original morphospace (many thanks to Dr Pablo Szekely for this!)

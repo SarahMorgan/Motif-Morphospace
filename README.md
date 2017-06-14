@@ -59,7 +59,7 @@ Once it's run you should have a bunch of files with the extension .OUT. These fi
 **4. Import your orca results**
 
 To recap- so far we have imported our networks and counted the number of every motif with 4 or fewer nodes in every network.
-Now we need to import the results from orca. To do this, you need to create the function 'importfile2'- this can be done manually in Matlab by going to 'Import data', selecting the option 'matrix', then 'Import selection' and 'Generate function'. SavThen, from the folder with your orca output files, run:
+Now we need to import the results from orca. To do this, you need to create the function 'importfile2'- this can be done manually in Matlab by going to 'Import data', selecting the option 'matrix', then 'Import selection' and 'Generate function'. Save the result in the same folder as the orca output files. Then, from the folder with your orca output files, run:
 
     numFiles=100;
     orca_output = cell(1,numFiles);
@@ -68,7 +68,7 @@ Now we need to import the results from orca. To do this, you need to create the 
     	orca_output{fileNum} = importfile(fileName);
     end
 
-Note that in the code above numFiles should be set to the number of networks you have (e.g. here we have 100 networks).
+Note that in the code above numFiles should be set to the number of networks/files you have (e.g. here we have 100 networks).
 
 **5. Calculate and plot your morphospace**
 

@@ -34,7 +34,7 @@ Next you want to output N files (one for each network), which contain the networ
 
     for num=1:100
         fid = fopen(strcat('orca_',num2str(num),'.txt'),'w');
-        fprintf(fid,'%d\t%d\n',vals_fororca{1,num}');
+        fprintf(fid,'%d\t%d\n',vals_orca{1,num}');
         fclose(fid);
     end
 
@@ -54,7 +54,7 @@ We want to loop this command over all of the networks, so in Windows you need to
 
     for %f in (.\*) do orca.exe 4 %f %f.OUT
 
-Here I'm counting everything up to 4 node motifs. Note that all of the files in the directory will be counted.
+Here I'm counting everything up to and including 4 node motifs. Note that all of the files in the directory will be counted.
 
 Once it's run you should have a bunch of files with the extension .OUT. These files contain the motif counts.
 
@@ -73,5 +73,5 @@ Congratulations- you have calculated your motif morphospace!! :)
 
 Obviously there are lots of things you might want to do with your motif morphospace. Below is a list of possible analyses with links to the code. Please feel free to add your own analyses to the list and put the relevant code in the folder!
 
-  - Calculate global network measures and colour the morphospace according to these measures
-  - Superimpose new data on top of your original morphospace (many thanks to... for this!)
+  - 'globalmeas.m': Calculates global network measures and colours the morphospace according to these measures
+  - 'superimpose.m': Superimposes new data on top of your original morphospace (many thanks to... for this!)

@@ -1,4 +1,4 @@
-﻿# Motif-Morphospace
+# Motif-Morphospace
 This repo describes how to take a bunch of networks and create their motif morphospace, as described in... The code is written in Matlab.
 
 Creating the motif morphospace involves calculating the motif profile of each network, then performing a principal component analysis (PCA) across all of the networks to extract the principal components (PCs). You can then plot the individual networks within the PC space.
@@ -24,10 +24,12 @@ Ultimately, the goal is to have a cell array "vals{1,N}" where each cell contain
 
 **2. Run the code adjacency2orca.m**
 
-This code accepts your adjacency matrices and puts them in the format required for orca, which is a piece of software used to count motifs. You can run it using the command:
+This code accepts your adjacency matrices and puts them in the format required for orca, which is a piece of software used to count motifs (more details below). You can run it using the command:
 
     vals_orca=adjacency2orca(vals_adj);
+    
 Next you want to output N files (one for each network), which contain the networks in the right format for orca. So create a new directory (called, e.g. vals_orca) for these files and make sure you're in it, then run:
+
     for num=1:100
         fid = fopen(strcat('orca_',num2str(num),'.txt'),'w');
         fprintf(fid,'%d\t%d\n',vals_orca{1,num}');
@@ -57,7 +59,7 @@ Once it's run you should have a bunch of files with the extension .OUT. These fi
 **4. Import your orca results**
 
 To recap- so far we have imported our networks and counted the number of every motif with 4 or fewer nodes in every network.
-Now we need to import the results from orca. To do this, you need to create the function 'importfile2'- this can be done manually in Matlab by going to 'Import data', selecting the option 'matrix', then 'Import selection' and 'Generate function'. Then, from the folder with your orca output files, run:
+Now we need to import the results from orca. To do this, you need to create the function 'importfile2'- this can be done manually in Matlab by going to 'Import data', selecting the option 'matrix', then 'Import selection' and 'Generate function'. SavThen, from the folder with your orca output files, run:
 
     numFiles=100;
     orca_output = cell(1,numFiles);

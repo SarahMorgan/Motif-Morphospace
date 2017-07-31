@@ -31,7 +31,7 @@ end
 % save motifs and motifs_norm:
 
 dlmwrite('motifs.dat',motifs)
-dlmwrite('motifs_norm.dat',motifs)
+dlmwrite('motifs_norm.dat',motifs_norm)
 
 % plot motif profile:
 
